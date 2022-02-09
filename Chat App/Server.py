@@ -1,7 +1,7 @@
 import socket
 import threading
 
-host = socket.gethostbyname(socket.gethostname())   # host server ip (private IP)
+host = "127.0.0.1"   # host server ip (private IP)
 port = 9090
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)      # define constants (internet, TCP)
@@ -21,7 +21,7 @@ def handle(client):     # handle individual connections to client
         try:
             message = client.recv(1024).decode("utf-8")     # receive message from client
             print(f"{usernames[clients.index(client)]} says {message}")
-            broadcast(message)      # broadcast to clients connected
+            broadcast(message.encode('utf-8'))      # broadcast to clients connected
         except:         # if client disconnects, remove them from client and usernames list
             index = clients.index(client)
             clients.remove(client)

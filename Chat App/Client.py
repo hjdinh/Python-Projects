@@ -4,7 +4,7 @@ import tkinter
 import tkinter.scrolledtext
 from tkinter import simpledialog
 
-host = socket.gethostbyname(socket.gethostname())
+host = "127.0.0.1"
 port = 9090
 
 class Client:
